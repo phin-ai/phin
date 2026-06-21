@@ -25,7 +25,8 @@ Phin is a native macOS app for working with **PostgreSQL, MySQL, SQLite, and Mon
 ## Why Phin
 
 - **One app, every database.** Postgres, MySQL, SQLite, MongoDB — same UI, same chat, same approval flow.
-- **Chat that knows your schema.** Pin tables with `@-mentions`. Phin writes against the columns you actually have, not the columns it guessed. Bring your own key — Anthropic, OpenAI, Gemini, or OpenRouter (300+ models).
+- **Chat that knows your schema.** Pin tables with `@-mentions` — drill into columns with `@table.`. Phin writes against the columns you actually have, not the columns it guessed. Bring your own key — Anthropic, OpenAI, Gemini, or OpenRouter (300+ models).
+- **Use it from Claude Code.** Phin ships a local connector so you can explore your saved connections from Claude Code — list connections, browse schemas, preview tables, and run read-only SQL or MongoDB queries. Read-only by default; passwords never leave your Keychain. One-click setup in **Settings → Claude Code**.
 - **Safety floor for writes.** Reads can auto-approve; writes and schema changes always need explicit approval. Production-tagged connections refuse `DROP TABLE` / `TRUNCATE` regardless.
 - **Passwords stay on your Mac.** Saved to the macOS Keychain. Never written to disk in plaintext, never sent to the AI.
 - **Native macOS feel.** Vibrancy throughout, Spotlight-style command palette, sheets, warm cà phê sữa theme.
@@ -72,6 +73,7 @@ Phin is a native macOS app for working with **PostgreSQL, MySQL, SQLite, and Mon
 | `⌘N` | New connection |
 | `⌘,` | Settings |
 | `⌘L` | Add selection to chat |
+| `⌘C` | Copy selected rows as TSV |
 | `⌘/` | Search all shortcuts |
 
 Full shortcut list lives in **Settings → Shortcuts**.

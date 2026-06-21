@@ -2,6 +2,23 @@
 
 What's new in each release of Phin. Newest first.
 
+## 0.13.0 — 2026-06-21
+
+- **Ask Claude Code about your data** — Phin ships a local connector for Claude Code, so you can explore your databases right from your editor: list saved connections, browse schemas, describe and preview tables, and run read-only SQL or MongoDB queries through the connections you've already set up. **Read-only by default** (writes are refused), passwords stay in the macOS Keychain and are never sent to the model, and large results are trimmed so a wide query won't flood the conversation.
+- **One-click setup** — a new **Settings → Claude Code** screen wires everything up with a single button (or shows the exact command to copy if Claude Code's CLI isn't found). Phin is also installable from the Claude Code plugin marketplace.
+- **Stop a slow tunnel test** — the **Stop** button now cancels a hanging SSH tunnel test immediately, instead of making you wait for the timeout.
+- **Safer SQL editor** — statements that quietly write (`SELECT … INTO`, and `EXPLAIN ANALYZE` on a write) now ask for the same confirmation as any other write.
+
+## 0.12.0 — 2026-06-17
+
+- **MongoDB array editing** — change or delete a single element inside an array field without disturbing the rest of the document; the items you didn't touch keep their exact type.
+
+## 0.11.0 — 2026-06-17
+
+- **Reference a column, not just a table** — after you `@`-mention a table in chat, type a dot (`@orders.`) to list and insert its exact column names.
+- **Copy rows with ⌘C** — select rows in the results grid and copy them as tab-separated values, ready to paste into a spreadsheet.
+- **Quieter WHERE filter suggestions** — the quick filter's column list shows only where a column actually fits and stays out of the way while you type a value.
+
 ## 0.10.0 — 2026-06-07
 
 - **OpenRouter support** — reach 300+ models (Claude, GPT, Gemini, DeepSeek, Llama…) with one key, alongside Anthropic / OpenAI / Gemini.
