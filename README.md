@@ -33,7 +33,7 @@ Phin is a native macOS app for working with **PostgreSQL, MySQL, SQLite, and Mon
 
 ## Download
 
-**[⬇︎ Download the latest release](https://github.com/phin-ai/phin/releases/latest)** — a universal macOS app (Apple Silicon + Intel), ~35 MB, self-contained.
+**[⬇︎ Download the latest release](https://github.com/phin-ai/phin/releases/latest)** — a universal macOS app (Apple Silicon + Intel), ~75 MB, self-contained.
 
 1. Download **`Phin-<version>-macOS.zip`** and unzip it.
 2. Drag **Phin** into your **Applications** folder.
@@ -61,6 +61,27 @@ Phin is a native macOS app for working with **PostgreSQL, MySQL, SQLite, and Mon
 | MySQL | ✅ Full support |
 | SQLite | ✅ Full support |
 | MongoDB | ✅ Full support |
+
+## Use with Claude Code
+
+Phin ships a local connector (an MCP server) that lets **Claude Code** explore the databases you've already connected in Phin — list connections, browse schemas, describe & preview tables, and run **read-only** SQL or MongoDB queries. Writes are refused, and your passwords stay in the macOS Keychain — they're never sent to the model.
+
+Pick whichever setup you prefer:
+
+**Option A — one click (easiest).** In Phin, open **Settings → Claude Code** and click **Install**. Phin registers the bundled connector with Claude Code for you. (If Claude Code's CLI isn't found, the screen shows the exact command to copy.)
+
+**Option B — one command.** Register it yourself:
+```bash
+claude mcp add -s user phin -- /Applications/Phin.app/Contents/MacOS/phin-mcp --stdio
+```
+
+**Option C — Claude Code plugin marketplace.** Inside Claude Code, add the Phin marketplace once, then install the plugin:
+```
+/plugin marketplace add phin-ai/phin-plugins
+/plugin install phin-mcp@phin-official
+```
+
+Then, in Claude Code, just ask about your data — e.g. *"using phin, list my connections"* or *"preview the users table on my staging Postgres."*
 
 ## Keyboard shortcuts
 
