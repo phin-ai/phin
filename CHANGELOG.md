@@ -2,6 +2,10 @@
 
 What's new in each release of Phin. Newest first.
 
+## 0.14.2 — 2026-06-29
+
+- **Answers from a single query instead of re-running it** — once Phin runs a query, it now knows the results are already on your screen and replies straight away, instead of running the same query again to "show" them. If it does repeat (even a reworded or reformatted version of the same query), it's caught and stopped right away.
+
 ## 0.14.0 — 2026-06-29
 
 - **No more getting stuck on the same query** — when Phin answered a question by running a query, it could occasionally re-run the exact same query over and over instead of replying, wasting time and looking broken. That loop is now caught and stopped, so Phin answers from the first result.
