@@ -2,6 +2,10 @@
 
 What's new in each release of Phin. Newest first.
 
+## 0.14.0 — 2026-06-29
+
+- **No more getting stuck on the same query** — when Phin answered a question by running a query, it could occasionally re-run the exact same query over and over instead of replying, wasting time and looking broken. That loop is now caught and stopped, so Phin answers from the first result.
+
 ## 0.13.0 — 2026-06-21
 
 - **Ask Claude Code about your data** — Phin ships a local connector for Claude Code, so you can explore your databases right from your editor: list saved connections, browse schemas, describe and preview tables, and run read-only SQL or MongoDB queries through the connections you've already set up. **Read-only by default** (writes are refused), passwords stay in the macOS Keychain and are never sent to the model, and large results are trimmed so a wide query won't flood the conversation.
