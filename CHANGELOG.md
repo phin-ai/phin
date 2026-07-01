@@ -2,6 +2,10 @@
 
 What's new in each release of Phin. Newest first.
 
+## 0.14.3 — 2026-06-29
+
+- **Backing up or exporting several tables now saves the right data** — asking Phin to export multiple query results at once could previously save the *last* query's rows into every file, so a "back up these 3 tables" request quietly produced files with the wrong contents. Each export now runs its own query and writes its complete, correct result, and exports are read-only (a query that would write or change data is refused).
+
 ## 0.14.2 — 2026-06-29
 
 - **Answers from a single query instead of re-running it** — once Phin runs a query, it now knows the results are already on your screen and replies straight away, instead of running the same query again to "show" them. If it does repeat (even a reworded or reformatted version of the same query), it's caught and stopped right away.
