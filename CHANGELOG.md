@@ -2,6 +2,11 @@
 
 What's new in each release of Phin. Newest first.
 
+## 0.14.4 — 2026-07-01
+
+- **A fixed export no longer looks like it failed** — when Phin's first attempt to save query results hit an error and it retried successfully, the old "Failed" card stayed on screen next to the file it had just produced, making it look like Phin couldn't recover when it actually had. The failed card now clears as soon as the file is written.
+- **Mentioning a table with @ works cleanly** — picking a table from the `@` suggestion list now closes the list and inserts the name once. It previously left the list open and, on a second Enter, kept tacking the table's name onto itself (`…_2024_h1_2024_h1…`). Typing `.` right after an inserted table still opens its column list.
+
 ## 0.14.3 — 2026-06-29
 
 - **Backing up or exporting several tables now saves the right data** — asking Phin to export multiple query results at once could previously save the *last* query's rows into every file, so a "back up these 3 tables" request quietly produced files with the wrong contents. Each export now runs its own query and writes its complete, correct result, and exports are read-only (a query that would write or change data is refused).
