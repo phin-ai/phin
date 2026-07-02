@@ -2,6 +2,10 @@
 
 What's new in each release of Phin. Newest first.
 
+## 0.14.5 — 2026-07-02
+
+- **Multi-line text keeps its line breaks** — editing or copying a value that spans several lines, like a Markdown field in a MongoDB document or a long text cell in a SQL table, no longer squashed everything onto one line. These values now open in a multi-line editor and keep their formatting when you copy them out or save an edit.
+
 ## 0.14.4 — 2026-07-01
 
 - **A fixed export no longer looks like it failed** — when Phin's first attempt to save query results hit an error and it retried successfully, the old "Failed" card stayed on screen next to the file it had just produced, making it look like Phin couldn't recover when it actually had. The failed card now clears as soon as the file is written.
