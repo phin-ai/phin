@@ -2,6 +2,10 @@
 
 What's new in each release of Phin. Newest first.
 
+## 0.14.6 — 2026-07-19
+
+- **Chat titles and suggested follow-ups are more consistent** — the quick helper calls that name a new chat and offer next-step prompts now run with fixed, deterministic settings, so the same conversation reliably gets the same title and the same quality of suggestions, instead of occasionally drifting into odd phrasings.
+
 ## 0.14.5 — 2026-07-02
 
 - **Multi-line text keeps its line breaks** — editing or copying a value that spans several lines, like a Markdown field in a MongoDB document or a long text cell in a SQL table, no longer squashed everything onto one line. These values now open in a multi-line editor and keep their formatting when you copy them out or save an edit.
