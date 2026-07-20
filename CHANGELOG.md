@@ -2,6 +2,10 @@
 
 What's new in each release of Phin. Newest first.
 
+## 0.14.8 — 2026-07-20
+
+- **Bulk MongoDB updates that write results back to a collection now work** — aggregations ending in a `$merge` or `$out` stage (the standard way to compute a value per group and write it to every matching document in one pass, like setting a category array on each tenant from its products) were silently rejected. Phin was adding an internal row cap after the write stage, which MongoDB doesn't allow there. The cap is now skipped for these pipelines, so they run in a single step instead of one update per document.
+
 ## 0.14.7 — 2026-07-20
 
 - **MongoDB filters on true/false and number fields now match your data** — in the MongoDB query builder, filtering a boolean field (*is true* / *is false*) or a number field with "is", "is not", or "is one of" compared the value as text, so it silently matched no documents. Filters now send the value with the right type, and each condition shows a small colored dot for the type Phin detected (blue = text, green = number, amber = true/false). Digit-heavy text like zip codes or phone numbers is kept as text so it still matches.
