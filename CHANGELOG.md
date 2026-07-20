@@ -2,6 +2,10 @@
 
 What's new in each release of Phin. Newest first.
 
+## 0.14.7 — 2026-07-20
+
+- **MongoDB filters on true/false and number fields now match your data** — in the MongoDB query builder, filtering a boolean field (*is true* / *is false*) or a number field with "is", "is not", or "is one of" compared the value as text, so it silently matched no documents. Filters now send the value with the right type, and each condition shows a small colored dot for the type Phin detected (blue = text, green = number, amber = true/false). Digit-heavy text like zip codes or phone numbers is kept as text so it still matches.
+
 ## 0.14.6 — 2026-07-19
 
 - **Chat titles and suggested follow-ups are more consistent** — the quick helper calls that name a new chat and offer next-step prompts now run with fixed, deterministic settings, so the same conversation reliably gets the same title and the same quality of suggestions, instead of occasionally drifting into odd phrasings.
