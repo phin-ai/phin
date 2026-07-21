@@ -2,6 +2,11 @@
 
 What's new in each release of Phin. Newest first.
 
+## 0.14.9 — 2026-07-21
+
+- **Postgres functions that exist in more than one form now open instead of erroring** — clicking a function with several versions (like pgvector's `cosine_distance`, which has a separate version for each vector type) used to fail with a "more than one function" error. Each version now shows as its own entry, labeled with its arguments, and opens to exactly that version's definition.
+- **The Functions, Views, Procedures and other object lists now have a search box** — the filter the Tables list already had is now on every object tab, so you can quickly narrow a long list of functions, views, sequences, enums or extensions by name.
+
 ## 0.14.8 — 2026-07-20
 
 - **Bulk MongoDB updates that write results back to a collection now work** — aggregations ending in a `$merge` or `$out` stage (the standard way to compute a value per group and write it to every matching document in one pass, like setting a category array on each tenant from its products) were silently rejected. Phin was adding an internal row cap after the write stage, which MongoDB doesn't allow there. The cap is now skipped for these pipelines, so they run in a single step instead of one update per document.
