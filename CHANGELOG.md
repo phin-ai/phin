@@ -2,6 +2,11 @@
 
 What's new in each release of Phin. Newest first.
 
+## 0.14.10 — 2026-07-28
+
+- **Tables in chat no longer shorten the values inside them** — long values like MongoDB ObjectIds, hashes, emails and timestamps were being cut down to something like `6a67b29d…`, so you couldn't read the id, copy it, or paste it into your next query. Chat now prints every cell in full and drops a column instead when a table would get too wide. Leaving rows out is still fine (a trailing `… (5 more)` row), but characters are never cut.
+- **Wide chat tables scroll on their own** — a table too wide for the chat panel used to drag the whole conversation sideways, which made the last columns look cut off. Each table now scrolls inside its own box, and a value stays on one line so you can select it in a single drag.
+
 ## 0.14.9 — 2026-07-21
 
 - **Postgres functions that exist in more than one form now open instead of erroring** — clicking a function with several versions (like pgvector's `cosine_distance`, which has a separate version for each vector type) used to fail with a "more than one function" error. Each version now shows as its own entry, labeled with its arguments, and opens to exactly that version's definition.
