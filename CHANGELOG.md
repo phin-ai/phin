@@ -2,6 +2,15 @@
 
 What's new in each release of Phin. Newest first.
 
+## 0.14.11 — 2026-08-01
+
+- **Copying a MongoDB collection now produces a faithful copy** — exporting a collection to JSON and importing it into another collection used to lose a lot on the way. Every ObjectId, date and decimal arrived as plain text, and any field missing from the *first* document was left out of every other one — on a real product collection with 58 distinct fields, 13 of them disappeared without a word. Documents are now exported whole and their types written in MongoDB's Extended JSON form, so `_id` stays an ObjectId, a date stays a date, and every field of every document is written. Binary, timestamp, regex, JavaScript and min/max-key fields survive too, and the files still open in `mongoimport` and Compass.
+- **Imported documents keep their field order** — a document used to come back with its fields shuffled into a random order, which made a re-imported collection open with its columns rearranged: a field you knew was second could turn up fortieth, and it looked for all the world like data had gone missing. Order now survives the round trip at every level, including inside nested objects.
+- **A cut-off JSON file now fails the import instead of importing half of it** — a file that ended mid-document, from an interrupted download or a partial export, was treated as though it had simply ended. The documents before the break were imported and the import reported success.
+- **The export dialog tells you what each format will do to a collection** — JSON is marked lossless; CSV and Parquet warn that they flatten documents and won't restore types when imported back. The result grid's own Export menu now says the same thing, so the two no longer disagree.
+- **Right-click a MongoDB database to create a collection** — MongoDB only creates a collection when you first insert into it, so there was no way to set up an empty one to import into without writing an `insertOne` in the terminal first. The name is checked before anything is sent, and the new collection appears in the tree straight away.
+- **Smaller fixes** — HTML inside an exported field is no longer escaped into `&lt;b&gt;`, so descriptions stay readable. Whole numbers imported from a `.jsonl` file stay whole numbers instead of becoming decimals. An import that maps two columns to the same name now says so rather than silently dropping one.
+
 ## 0.14.10 — 2026-07-28
 
 - **Tables in chat no longer shorten the values inside them** — long values like MongoDB ObjectIds, hashes, emails and timestamps were being cut down to something like `6a67b29d…`, so you couldn't read the id, copy it, or paste it into your next query. Chat now prints every cell in full and drops a column instead when a table would get too wide. Leaving rows out is still fine (a trailing `… (5 more)` row), but characters are never cut.
