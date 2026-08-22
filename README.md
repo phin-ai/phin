@@ -62,9 +62,11 @@ Phin is a native macOS app for working with **PostgreSQL, MySQL, SQLite, and Mon
 | SQLite | ✅ Full support |
 | MongoDB | ✅ Full support |
 
-## Use with Claude Code
+## Use with Claude Code or Codex
 
-Phin ships a local connector (an MCP server) that lets **Claude Code** explore the databases you've already connected in Phin — list connections, browse schemas, describe & preview tables, and run **read-only** SQL or MongoDB queries. Writes are refused, and your passwords stay in the macOS Keychain — they're never sent to the model.
+Phin ships a local connector (an MCP server) that lets **Claude Code** or **Codex** explore the databases you've already connected in Phin — list connections, browse schemas, describe & preview tables, and run **read-only** SQL or MongoDB queries. Writes are refused, and your passwords stay in the macOS Keychain — they're never sent to the model.
+
+### Claude Code
 
 Pick whichever setup you prefer:
 
@@ -81,7 +83,16 @@ claude mcp add -s user phin -- /Applications/Phin.app/Contents/MacOS/phin-mcp --
 /plugin install phin-mcp@phin-official
 ```
 
-Then, in Claude Code, just ask about your data — e.g. *"using phin, list my connections"* or *"preview the users table on my staging Postgres."*
+### Codex
+
+One command — Codex always registers at user level, so there's no scope to pick:
+```bash
+codex mcp add phin -- /Applications/Phin.app/Contents/MacOS/phin-mcp --stdio
+```
+
+Check it landed with `codex mcp list`, or `/mcp` inside Codex. (The plugin marketplace above is Claude Code only — Codex talks to the connector directly.)
+
+Then, in either one, just ask about your data — e.g. *"using phin, list my connections"* or *"preview the users table on my staging Postgres."*
 
 ## Keyboard shortcuts
 
