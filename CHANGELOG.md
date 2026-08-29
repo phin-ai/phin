@@ -2,6 +2,11 @@
 
 What's new in each release of Phin. Newest first.
 
+## 0.14.12 — 2026-08-29
+
+- **Asking AI chat for a document by its id finds it again** — pasting an id straight from the result grid into chat, whether one id or a list of them, came back as "0 rows" even when the documents were sitting right there. Nothing in the reply pointed at a query problem, so it read as though the documents had been deleted, and the obvious next check — is the id wrong? — led nowhere. An id written as text was never being compared against the ObjectId a collection actually stores, so it could never match. Chat now matches both forms.
+- **Id filters behave the same way everywhere else** — the query editor and the Claude Code connector had a narrower version of the same gap: a single id matched, but "any of these ids" matched nothing. Lists now work too, along with "not this id", "none of these ids", and ids reached through a nested field such as `author._id`. Collections holding a mix of text ids and ObjectIds match either way.
+
 ## 0.14.11 — 2026-08-01
 
 - **Copying a MongoDB collection now produces a faithful copy** — exporting a collection to JSON and importing it into another collection used to lose a lot on the way. Every ObjectId, date and decimal arrived as plain text, and any field missing from the *first* document was left out of every other one — on a real product collection with 58 distinct fields, 13 of them disappeared without a word. Documents are now exported whole and their types written in MongoDB's Extended JSON form, so `_id` stays an ObjectId, a date stays a date, and every field of every document is written. Binary, timestamp, regex, JavaScript and min/max-key fields survive too, and the files still open in `mongoimport` and Compass.
